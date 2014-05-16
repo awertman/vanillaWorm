@@ -5,18 +5,19 @@ GamePlayController = function(model,view) {
 
 GamePlayController.prototype = {
   initializeGame: function() {
-    //
-    this.view.renderGrid( this.model.gridLength)
+    this.model.createMarker()
+    this.view.renderGrid( this.model.gridLength )
     this.beginGameCycle()
   },
   beginGameCycle: function() {
     //
-    this.beginSnakeMove()
+    this.beginWormMove()
     //
   },
-  beginSnakeMove: function() {
+  beginWormMove: function() {
     this.model.updateGamePositions()
     this.view.renderWormAndMarker( this.model.wormTail , this.model.marker )
+    setTimeout( this.beginGameCycle.bind(this), 400 )
   },
   trackKeyPress: function() {
     this.model.move.arrowKey = event.keyCode
