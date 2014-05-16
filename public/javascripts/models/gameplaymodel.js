@@ -2,15 +2,14 @@ GamePlayModel = function(wormHead,gridLength) {
   this.gridLength = gridLength
   this.wormHead = wormHead
   this.wormTail = []
-  this.marker = []
+
   this.gameLogic = new GameLogic()
   this.move = new Move( this )
-
 }
 
 GamePlayModel.prototype = {
   checkValidMove: function() {
-    return this.gameLogic.checkGameStatus (this.wormHead, this.wormTail, this.gridLength )
+    return this.gameLogic.checkGameStatus( this.wormHead, this.wormTail, this.gridLength )
   },
   updateGamePositions: function() {
     this._updateTail()

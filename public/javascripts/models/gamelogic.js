@@ -18,7 +18,7 @@ GameLogic.prototype = {
   },
   _checkTail: function(head,tail) {
     for (i = 0; i < tail.length-1; i++) {
-      if ( head == tail[i][0] + "," + tail[i][1] ) {
+      if ( head.toString() == tail[i].toString() ) {
         this.gameStatus = false
       }
     }
