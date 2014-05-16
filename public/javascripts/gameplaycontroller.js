@@ -15,6 +15,7 @@ GamePlayController.prototype = {
     //
   },
   beginSnakeMove: function() {
+    this.model.updateGamePositions()
     this.view.renderWormAndMarker( this.model.wormTail , this.model.marker )
   },
   trackKeyPress: function() {

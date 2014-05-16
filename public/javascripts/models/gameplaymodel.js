@@ -7,3 +7,13 @@ GamePlayModel = function(wormHead,gridLength) {
 
 }
 
+GamePlayModel.prototype = {
+  updateGamePositions: function() {
+    this._updateTail()
+    this.move.wormHead()
+    this.wormTail.push( this.wormHead.slice(0) )
+  },
+  _updateTail: function() {
+    this.wormTail.shift()
+  }
+}
