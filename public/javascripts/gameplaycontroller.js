@@ -12,8 +12,9 @@ GamePlayController.prototype = {
   beginGameCycle: function() {
     if ( this.model.checkValidMove() ) {
       this.beginWormMove()
+    } else {
+      this.view.renderGameOver( this.model.wormTail )
     }
-    // game over
   },
   beginWormMove: function() {
     this.model.updateGamePositions()
