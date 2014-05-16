@@ -4,6 +4,11 @@ GamePlayController = function(model,view) {
 }
 
 GamePlayController.prototype = {
+  initializeGame: function() {
+
+    this.view.renderGrid( this.model.gridLength)
+
+  },
   trackKeyPress: function() {
     this.model.move.arrowKey = event.keyCode
   }

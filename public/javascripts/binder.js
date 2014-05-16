@@ -5,7 +5,7 @@ window.onload = function() {
   view = new View( selectors )
   model = new GamePlayModel( wormStart , gridLength )
   controller = new GamePlayController( model , view )
-
+  controller.initializeGame()
   new EventBinder( controller ).bindKeyListener()
 }
 
