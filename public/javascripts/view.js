@@ -26,4 +26,6 @@ View.prototype = {
     this.context.fillStyle = "red";
     this.context.fillRect( marker[0] * this.cellSize , marker[1] * this.cellSize , this.cellSize , this.cellSize )
   }
+
+  // game over
 }

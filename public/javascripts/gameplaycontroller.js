@@ -10,14 +10,15 @@ GamePlayController.prototype = {
     this.beginGameCycle()
   },
   beginGameCycle: function() {
-    //
-    this.beginWormMove()
-    //
+    if ( this.model.checkValidMove() ) {
+      this.beginWormMove()
+    }
+    // game over
   },
   beginWormMove: function() {
     this.model.updateGamePositions()
     this.view.renderWormAndMarker( this.model.wormTail , this.model.marker )
-    setTimeout( this.beginGameCycle.bind(this), 400 )
+    setTimeout( this.beginGameCycle.bind(this), 200 )
   },
   trackKeyPress: function() {
     this.model.move.arrowKey = event.keyCode

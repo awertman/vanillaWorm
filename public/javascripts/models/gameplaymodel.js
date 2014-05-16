@@ -3,11 +3,15 @@ GamePlayModel = function(wormHead,gridLength) {
   this.wormHead = wormHead
   this.wormTail = []
   this.marker = []
+  this.gameLogic = new GameLogic()
   this.move = new Move( this )
 
 }
 
 GamePlayModel.prototype = {
+  checkValidMove: function() {
+    return this.gameLogic.checkGameStatus (this.wormHead, this.wormTail, this.gridLength )
+  },
   updateGamePositions: function() {
     this._updateTail()
     this.move.wormHead()
@@ -19,6 +23,10 @@ GamePlayModel.prototype = {
     this.marker = [ randomColumn , randomRow ]
   },
   _updateTail: function() {
-    this.wormTail.shift()
+    if ( this.gameLogic.checkMarkerAndWormMatch( this.wormHead, this.marker ) ) {
+      this.createMarker()
+    } else {
+      this.wormTail.shift()
+    }
   }
 }
