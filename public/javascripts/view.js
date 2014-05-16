@@ -5,9 +5,18 @@ View = function(selectors) {
 
 View.prototype = {
   renderGrid: function() {
-    this.context = document.querySelector (this.canvasElement ).getContext("2d")
+    this.context = document.querySelector(this.canvasElement ).getContext("2d")
     this.context.canvas.width = this.gridDimension
     this.context.canvas.height = this.gridDimension
     this.cellSize = this.gridDimension / length
+  },
+  renderWormAndMarker: function(tail,marker) {
+    this.renderWorm(tail)
+
+  },
+  renderWorm: function(tail) {
+    this.context.fillStyle = "lightgreen"
+    for ( i=0; i < tail.length; i++ )
+      this.context.fillRect( tail[i][0] * this.cellSize, tail[i][1] * this.cellSize, this.cellSize, this.cellSize)
   }
 }
