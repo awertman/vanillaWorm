@@ -18,7 +18,7 @@ GamePlayController.prototype = {
   beginWormMove: function() {
     this.model.updateGamePositions()
     this.view.renderWormAndMarker( this.model.wormTail , this.model.marker )
-    setTimeout( this.beginGameCycle.bind(this), 200 )
+    setTimeout( this.beginGameCycle.bind(this), 100 )
   },
   trackKeyPress: function() {
     this.model.move.arrowKey = event.keyCode
