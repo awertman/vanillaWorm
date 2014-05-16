@@ -3,4 +3,7 @@ GamePlayModel = function(wormHead,gridLength) {
   this.wormHead = wormHead
   this.wormTail = []
 
+  this.move = new Move( this )
+
 }
+

@@ -15,6 +15,6 @@ EventBinder = function( controller ) {
 
 EventBinder.prototype = {
   bindKeyListener: function() {
-
+    document.onkeydown = this.controller.trackKeyPress.bind( this.controller )
   }
 }

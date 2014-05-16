@@ -4,5 +4,7 @@ GamePlayController = function(model,view) {
 }
 
 GamePlayController.prototype = {
-
+  trackKeyPress: function() {
+    this.model.move.arrowKey = event.keyCode
+  }
 }
