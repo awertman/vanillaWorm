@@ -4,7 +4,7 @@ GameLogic = function() {
 
 GameLogic.prototype = {
   checkMarkerAndWormMatch: function(head,marker) {
-    return head.toString() == marker.toString()
+    return head.toString() == marker.toString() // String compare should be ===
   },
   checkGameStatus: function(head,tail,length) {
     this._checkBorder( head, length )
@@ -12,6 +12,8 @@ GameLogic.prototype = {
     return this.gameStatus
   },
   _checkBorder: function(head,length) {
+    // Makes me sad  to read this.  magic indices, complex conditionals.  we
+    // can make that more crisp
     if ( (head[0] < 0) || (head[1] < 0) || (head[0] >= length) || (head[1] >= length) ) {
       this.gameStatus = false
     }
