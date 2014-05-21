@@ -11,7 +11,7 @@ Move.prototype = {
     }
   },
   _left: function() {
-    if (this.arrowKey== 37) {
+    if (this.arrowKey== 37) {  // check out a refactor called "replace magic number with symbolic constant
       this.model.wormHead[0] -= 1
     }
   },
