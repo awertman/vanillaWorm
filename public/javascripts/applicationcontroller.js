@@ -1,11 +1,11 @@
 /* just Controller should suffice */
 
-GamePlayController = function(model,view) {
+ApplicationController = function(model,view) {
   this.model = model // bad name.  What is it?  Just looking at this file I have no idea what this is
   this.view = view
 }
 
-GamePlayController.prototype = {
+ApplicationController.prototype = {
   initializeGame: function() {
     this.model.createMarker() // 1. no idea what this does at a sight; make it easier for me
     /* second thought, pull the marker out into your binder and inject it into
