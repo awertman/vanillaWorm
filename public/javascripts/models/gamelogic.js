@@ -4,23 +4,21 @@ GameLogic = function() {
 
 GameLogic.prototype = {
   checkMarkerAndWormMatch: function(head,marker) {
-    return head.toString() == marker.toString() // String compare should be ===
+    return ( ( head.column === marker.column ) && ( head.row === marker.row ) )
   },
-  checkGameStatus: function(head,tail,length) {
-    this._checkBorder( head, length )
+  checkGameStatus: function(head,tail,gridLength) {
+    this._checkBorder( head, gridLength )
     this._checkTail( head, tail )
     return this.gameStatus
   },
-  _checkBorder: function(head,length) {
-    // Makes me sad  to read this.  magic indices, complex conditionals.  we
-    // can make that more crisp
-    if ( (head[0] < 0) || (head[1] < 0) || (head[0] >= length) || (head[1] >= length) ) {
+  _checkBorder: function(head,gridLength) {
+    if ( (head.column < 0) || (head.row < 0) || (head.column >= gridLength) || (head.row >= gridLength) ) {
       this.gameStatus = false
     }
   },
   _checkTail: function(head,tail) {
     for (i = 0; i < tail.length-1; i++) {
-      if ( head.toString() == tail[i].toString() ) {
+      if ( ( head.column === tail[i].column ) && ( head.row === tail[i].row ) ) {
         this.gameStatus = false
       }
     }

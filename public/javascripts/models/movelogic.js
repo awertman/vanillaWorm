@@ -1,6 +1,10 @@
 Move = function(model) {
   this.model = model
-  this.arrowKey = 38 // game starts with worm moving up
+  this.leftKey = 37
+  this.upKey = 38
+  this.rightKey = 39
+  this.downKey = 40
+  this.arrowKey = this.upKey // game starts with worm moving up
   this.moveDirection = [ this._left, this._up, this._right, this._down ]
 }
 
@@ -11,23 +15,25 @@ Move.prototype = {
     }
   },
   _left: function() {
-    if (this.arrowKey== 37) {  // check out a refactor called "replace magic number with symbolic constant
-      this.model.wormHead[0] -= 1
+    if (this.arrowKey == this.leftKey) {
+      this.model.wormHead.column -= 1
     }
   },
   _up: function() {
-    if (this.arrowKey== 38) {
-      this.model.wormHead[1] -= 1
+    if (this.arrowKey == this.upKey) {
+      this.model.wormHead.row -= 1
     }
   },
   _right: function() {
-    if ( this.arrowKey== 39 ) {
-      this.model.wormHead[0] += 1
+    if ( this.arrowKey == this.rightKey ) {
+      this.model.wormHead.column += 1
     }
   },
   _down: function() {
-    if ( this.arrowKey== 40 ) {
-      this.model.wormHead[1] += 1
+    if ( this.arrowKey == this.downKey ) {
+      this.model.wormHead.row += 1
     }
   }
 }
+
+

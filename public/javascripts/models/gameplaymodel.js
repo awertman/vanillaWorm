@@ -1,6 +1,8 @@
-GamePlayModel = function(wormHead,gridLength) {
+GamePlayModel = function(wormHeadColumn, wormHeadRow, gridLength) {
   this.gridLength = gridLength
-  this.wormHead = wormHead
+  this.wormHeadColumn = wormHeadColumn
+  this.wormHeadRow = wormHeadRow
+  this.wormHead = { column: wormHeadColumn, row: wormHeadRow }
   this.wormTail = []
 
   this.gameLogic = new GameLogic()
@@ -14,12 +16,12 @@ GamePlayModel.prototype = {
   updateGamePositions: function() {
     this._updateTail()
     this.move.wormHead()
-    this.wormTail.push( this.wormHead.slice(0) )
+    this.wormTail.push( { column: this.wormHead.column, row: this.wormHead.row } )
   },
   createMarker: function() {
     var randomColumn = Math.floor( Math.random() * this.gridLength )
     var randomRow = Math.floor( Math.random() * this.gridLength )
-    this.marker = [ randomColumn , randomRow ]
+    this.marker =  { column: randomColumn, row: randomRow }
   },
   _updateTail: function() {
     if ( this.gameLogic.checkMarkerAndWormMatch( this.wormHead, this.marker ) ) {
