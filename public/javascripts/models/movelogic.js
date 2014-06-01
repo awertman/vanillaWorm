@@ -16,22 +16,22 @@ Move.prototype = {
   },
   _left: function() {
     if (this.arrowKey == this.leftKey) {
-      this.model.wormHead.column -= 1
+      this.model.head.column -= 1
     }
   },
   _up: function() {
     if (this.arrowKey == this.upKey) {
-      this.model.wormHead.row -= 1
+      this.model.head.row -= 1
     }
   },
   _right: function() {
     if ( this.arrowKey == this.rightKey ) {
-      this.model.wormHead.column += 1
+      this.model.head.column += 1
     }
   },
   _down: function() {
     if ( this.arrowKey == this.downKey ) {
-      this.model.wormHead.row += 1
+      this.model.head.row += 1
     }
   }
 }
