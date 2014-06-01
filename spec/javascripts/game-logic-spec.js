@@ -1,41 +1,39 @@
-describe ( "GameLogic", function() {
+describe ( "GameState", function() {
   beforeEach(function() {
     length = 20;
-    gameLogic = new GameLogic()
-  })
-
-  afterEach(function() {
-
+    gameState = new GameState(length)
   })
 
   it("should start the game status as true", function() {
-    expect(gameLogic.gameStatus).toEqual(true)
+    expect(gameState.playerAlive).toEqual(true)
   })
   it("should return false when head index 0 is less than 0", function() {
-    gameLogic._checkBorder( [-1,0] , length )
-    expect(gameLogic.gameStatus).toEqual(false)
+    gameState._checkBorder( {column:-1, row: 0} )
+    expect(gameState.playerAlive).toEqual(false)
   })
   it("should return false when head index 0 is greater than length", function() {
-    gameLogic._checkBorder( [21,0] , length )
-    expect(gameLogic.gameStatus).toEqual(false)
+    gameState._checkBorder( {column:21, row: 0} )
+    expect(gameState.playerAlive).toEqual(false)
   })
   it("should return false when head index 1 is less than 0", function() {
-    gameLogic._checkBorder( [0,-1] , length )
-    expect(gameLogic.gameStatus).toEqual(false)
+    gameState._checkBorder( {column: 0, row: -1} )
+    expect(gameState.playerAlive).toEqual(false)
   })
   it("should return false when head index 1 is greater than length", function() {
-    gameLogic._checkBorder( [0,21] , length )
-    expect(gameLogic.gameStatus).toEqual(false)
+    gameState._checkBorder( {column:0, row: 21} )
+    expect(gameState.playerAlive).toEqual(false)
   })
-  it("should return true when snakeHead is equal to marker", function() {
-    var head = [5,5]
-    var marker = [5,5]
-    expect(gameLogic.checkMarkerAndWormMatch( head , marker)).toEqual(true)
+  it("should return true when wormHead is equal to food", function() {
+    var head = {column:10, row: 10}
+    var food = {column:10, row: 10}
+    gameState._checkFoodMatch( head , food)
+    expect(gameState.foodMatch).toEqual(true)
   })
-  it("should return false when snakeHead is not equal to marker", function() {
-    var head = [5,6]
-    var marker = [5,5]
-    expect(gameLogic.checkMarkerAndWormMatch( head , marker)).toEqual(false)
+  it("should return false when wormHead is not equal to food", function() {
+    var head = {column:9, row: 10}
+    var food = {column:10, row: 10}
+    gameState._checkFoodMatch( head , food)
+    expect(gameState.foodMatch).toEqual(false)
   })
 })
 

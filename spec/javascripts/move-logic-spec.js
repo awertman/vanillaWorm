@@ -1,9 +1,12 @@
-describe ( "MoveLogic", function() {
+describe ( "Move Logic", function() {
   beforeEach(function() {
-    var gridLength = 20 // number of "squares"
-    var wormStart = [ gridLength / 2 , gridLength - 1 ] // starts at bottom middle of boardz
-    model = new GamePlayModel(wormStart, gridLength)
-    moveLogic = new Move( model )
+    var gridLength = 20
+    var wormStartColumn = gridLength / 2
+    var wormStartRow = gridLength - 1
+    worm = new Worm( wormStartColumn, wormStartRow )
+
+    move = new Move( worm )
+
     left = 37
     up = 38
     right = 39
@@ -13,29 +16,34 @@ describe ( "MoveLogic", function() {
 
 
   it("should start the game movement as up", function() {
-    expect(moveLogic.arrowKey).toEqual( up )
+    expect(move.arrowKey).toEqual( up )
   })
   it("should start the game head at wormHead origin", function() {
-    expect(model.wormHead.toString()).toEqual("10,19")
+    expect(worm.head.row).toEqual(19)
+    expect(worm.head.column).toEqual(10)
   })
   it("should move the head up (index 1 is one less) on first move", function() {
-    moveLogic.wormHead()
-    expect(model.wormHead.toString()).toEqual("10,18")
+    move.wormHead()
+    expect(worm.head.row).toEqual(18)
+    expect(worm.head.column).toEqual(10)
   })
   it("should move the head down (index 1 is one greater) on down keystroke", function() {
-    moveLogic.arrowKey = down
-    moveLogic.wormHead()
-    expect(model.wormHead.toString()).toEqual("10,20")
+    move.arrowKey = down
+    move.wormHead()
+    expect(worm.head.row).toEqual(20)
+    expect(worm.head.column).toEqual(10)
   })
   it("should move the head left (index 0 is one less) on left keystroke", function() {
-    moveLogic.arrowKey = left
-    moveLogic.wormHead()
-    expect(model.wormHead.toString()).toEqual("9,19")
+    move.arrowKey = left
+    move.wormHead()
+    expect(worm.head.row).toEqual(19)
+    expect(worm.head.column).toEqual(9)
   })
   it("should move the head right (index 0 is one greater) on right keystroke", function() {
-    moveLogic.arrowKey = right
-    moveLogic.wormHead()
-    expect(model.wormHead.toString()).toEqual("11,19")
+    move.arrowKey = right
+    move.wormHead()
+    expect(worm.head.row).toEqual(19)
+    expect(worm.head.column).toEqual(11)
   })
 
 })
