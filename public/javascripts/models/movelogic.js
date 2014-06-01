@@ -1,10 +1,10 @@
-Move = function(model) {
+Move = function( model ) {
   this.model = model
   this.leftKey = 37
   this.upKey = 38
   this.rightKey = 39
   this.downKey = 40
-  this.arrowKey = this.upKey // game starts with worm moving up
+  this.arrowKey = 38 // game starts with worm moving up
   this.moveDirection = [ this._left, this._up, this._right, this._down ]
 }
 

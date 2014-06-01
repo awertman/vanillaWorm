@@ -1,21 +1,19 @@
-
-// This isn't just binding, this is initialization, I'd put it in a file named
-// something else.  I like initialization.js
-
 document.addEventListener("DOMContentLoaded", function() {
-  var gridLength = 20
-  var wormStart = [ gridLength / 2 , gridLength - 1 ]
-  var wormStartColumn = gridLength / 2
-  var wormStartRow = gridLength - 1
-  var selectors = { canvas: '#wormGrid', wormColor: 'lightgreen', gameOverColor: 'red' , markerColor: 'red'}
-  var view = new View( selectors )
-  var model = new GamePlayModel( wormStartColumn, wormStartRow, gridLength ) /* Yeah, i think break these into an instance of a worm and of a food.... */
-  var controller = new ApplicationController( model, view ) /* Inject the models here... */
-  controller.initializeGame()
-  new EventBinder( controller ).bindKeyListener() /* if you scrap this...*/
 
-  /* you can do  new GamePlayController( model , view ).initializeGame()  --
-   * seems cleaner */
+  document.querySelector('button').addEventListener('click', function() {
+    var gridLength = 20
+    var wormStartColumn = gridLength / 2
+    var wormStartRow = gridLength - 1
+    var selectors = { canvas: '#wormGrid', wormColor: 'lightgreen', gameOverColor: 'red' , markerColor: 'red', gridLength: gridLength}
+
+    var view = new View( selectors )
+    var worm = new Worm( wormStartColumn, wormStartRow, gridLength ) /* Yeah, i think break these into an instance of a worm and of a food.... */
+    var controller = new ApplicationController( worm, view ) /* Inject the models here... */
+    controller.initializeGame()
+    new EventBinder( controller ).bindKeyListener() /* if you scrap this...*/
+    /* you can do  new GamePlayController( model , view ).initializeGame()  --
+     * seems cleaner */
+  })
 })
 
 /*
@@ -38,3 +36,5 @@ EventBinder.prototype = {
     document.onkeydown = this.controller.trackKeyPress.bind( this.controller )
   }
 }
+
+

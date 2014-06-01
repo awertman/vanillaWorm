@@ -1,4 +1,4 @@
-GamePlayModel = function(wormHeadColumn, wormHeadRow, gridLength) {
+Worm = function( wormHeadColumn, wormHeadRow, gridLength ) {
   this.gridLength = gridLength
   this.wormHeadColumn = wormHeadColumn
   this.wormHeadRow = wormHeadRow
@@ -9,7 +9,7 @@ GamePlayModel = function(wormHeadColumn, wormHeadRow, gridLength) {
   this.move = new Move( this )
 }
 
-GamePlayModel.prototype = {
+Worm.prototype = {
   checkValidMove: function() {
     return this.gameLogic.checkGameStatus( this.wormHead, this.wormTail, this.gridLength )
   },
