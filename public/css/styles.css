@@ -1,4 +1,36 @@
 canvas {
+  width: 50%;
+  margin-left: 25%;
   border:1px solid #000000;
+  margin-top: 35px;
   visibility: hidden;
+}
+
+nav {
+  font-family: arial;
+  text-align: center;
+  position: fixed;
+  color: black;
+  width: 100%;
+  height: 25px;
+  padding-top: 5px;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
+  background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
+}
+
+button {
+  position: fixed;
+  margin-left: 46%;
+  margin-top: 25%;
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #bddbfa), color-stop(1, #80b5ea) );
+  background:-moz-linear-gradient( center top, #bddbfa 5%, #80b5ea 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#bddbfa', endColorstr='#80b5ea');
+  color: black;
+}
+
+button:hover {
+  background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #80b5ea), color-stop(1, #bddbfa) );
+  background:-moz-linear-gradient( center top, #80b5ea 5%, #bddbfa 100% );
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#80b5ea', endColorstr='#bddbfa');
+  background-color:#80b5ea;
 }
