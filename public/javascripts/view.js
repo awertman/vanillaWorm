@@ -4,7 +4,7 @@ View = function( selectors ) {
   this.gameOverColor = selectors.gameOverColor
   this.foodColor = selectors.foodColor
   this.gridLength = selectors.gridLength
-  this.gridDimension =  Math.floor( Math.min( window.innerWidth, window.innerHeight ) * 0.9 / 100 ) * 100
+  this.gridDimension =  Math.floor( Math.min( window.innerWidth, window.innerHeight ) * 0.85 / 100 ) * 100
   this.cellSize = this.gridDimension / this.gridLength
 }
 

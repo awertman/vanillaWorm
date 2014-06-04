@@ -1,0 +1,1 @@
+Game of Worm written in vanilla Javascript using HTML5 canvas.
