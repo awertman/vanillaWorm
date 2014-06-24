@@ -2,13 +2,13 @@ ApplicationController = function( Worm, GameState, View, gridLength ) {
   this.Worm = Worm
   this.GameState = GameState
   this.View = View
-  this.food = new Food(gridLength)
+  this.Food = new Food(gridLength)
   this.gridLength = gridLength
 }
 
 ApplicationController.prototype = {
   initializeGame: function() {
-    this.trackKeyPress(this.Worm)
+    this.trackKeyPress()
     this.View.renderGrid()
     this.beginGameCycle()
   },
@@ -21,20 +21,21 @@ ApplicationController.prototype = {
   },
   beginWormMove: function() {
     this.Worm.updateGamePositions( this.GameState.foodMatch )
-    this.checkFoodMatch( this.GameState.foodMatch )
-    this.View.renderWormAndFood( this.Worm.tail, this.food.position )
-    this.GameState.updateGameStatus( this.Worm.head, this.Worm.tail, this.food.position )
+    this.createFoodIfMatch( this.GameState.foodMatch )
+    this.GameState.updateGameStatus( this.Worm.head, this.Worm.tail, this.Food.position )
+    this.View.renderWormAndFood( this.Worm.tail, this.Food.position )
 
     setTimeout( this.beginGameCycle.bind( this ), 100 )
   },
-  checkFoodMatch: function( foodMatch ) {
+  createFoodIfMatch: function( foodMatch ) {
     if (foodMatch) {
-      this.food = new Food(this.gridLength)
+      this.Food = new Food(this.gridLength)
     }
   },
-  trackKeyPress: function( worm ) {
-    document.onkeydown = function( event ) {
-      worm.move.arrowKey = event.keyCode
-    }
+  trackKeyPress: function() {
+    document.addEventListener('keydown', this.changeWormDirection.bind( this ) )
+  },
+  changeWormDirection: function() {
+    this.Worm.move.arrowKey = event.keyCode
   }
 }

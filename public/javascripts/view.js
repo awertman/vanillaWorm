@@ -18,14 +18,23 @@ View.prototype = {
     this.context.canvas.height = this.gridDimension
   },
   renderWormAndFood: function( tail, food ) {
-    this.context.clearRect( 0, 0, this.gridDimension, this.gridDimension )
+    var fillColumnStart = 0
+    var fillRowStart = 0
+    var gridSizeHeight = this.gridDimension
+    var gridSizeWidth = this.gridDimension
+
+    this.context.clearRect( fillColumnStart, fillRowStart, gridSizeHeight, gridSizeWidth )
     this.renderfood( food )
     this.renderWorm( tail )
   },
   renderWorm: function( tail ) {
     this.context.fillStyle = this.wormColor;
     for ( i=0; i < tail.length; i++) {
-      this.context.fillRect( tail[i].column * this.cellSize, tail[i].row * this.cellSize, this.cellSize, this.cellSize )
+      var fillColumnStart = tail[i].column * this.cellSize
+      var fillRowStart = tail[i].row * this.cellSize
+      var fillColumnLength =  this.cellSize
+      var fillRowLength =  this.cellSize
+      this.context.fillRect( fillColumnStart, fillRowStart, fillColumnLength, fillRowLength)
     }
   },
   renderfood: function( food ) {
@@ -40,3 +49,4 @@ View.prototype = {
     document.querySelector('button').style.visibility="visible"
   }
 }
+
